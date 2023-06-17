@@ -1,4 +1,4 @@
-/* test
+/*
  * features
  * 	specify number of players
  * 	randomize deck
