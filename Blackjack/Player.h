@@ -1,5 +1,5 @@
 /*
- * 	Person.h
+ * 	Player.h
  * 		money
  * 		name
  * 		wins
@@ -9,23 +9,24 @@
  *		hand
 */
 
-#include <string>
-
 #ifndef PERSON_H_
 #define PERSON_H_
 
-class Person {
+#include <string>
+
+class Player {
 public:
-	Person();
-	Person(std::string n, int m, unsigned int w);
-	virtual ~Person();
+	Player();
+	Player(std::string n, int m, unsigned int w);
+	virtual ~Player();
 
 	void setName(std::string n);
 	std::string getName();
-
+	void askName();
+	void askMoney();
+	void askWins();
 	void setMoney(int m);
 	int getMoney();
-
 	void setWins(unsigned w);
 	unsigned getWins();
 
@@ -34,10 +35,10 @@ private:
 	int money;
 	unsigned wins;
 
-friend std::istream &read(std::istream &is, Person &person);
+friend std::istream &read(std::istream &is, Player &person);
 };
 
-std::istream &read(std::istream &is, Person &person);
+std::istream &read(std::istream &is, Player &person);
 
 #endif /* PERSON_H_ */
 

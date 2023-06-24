@@ -12,39 +12,25 @@
  * 	compare to dealer
  * 	track wins
  *
+ *
+ *	**left off
  */
 
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Person.h";
+#include "Player.h"
 #include "Deck.h"
+#include "Game.h"
 
 using namespace std;
 
 int main(){
-/*
-	unsigned numPlayers;
-	cout << "Enter number of players: ";
-	cin  >> numPlayers;
-	cout << endl;
 
-	vector<Person> players(numPlayers);
-	for(unsigned i = 0; i < numPlayers; ++i){
-		read(cin, players[i]);
-	}
+	cout << "Program started..." << endl;
+	Game game(2,2,1001,1);
 
-	cout << players[0].getName() << players[0].getMoney() << players[0].getWins() << endl;
-	cout << players[1].getName() << players[1].getMoney() << players[1].getWins() << endl;
-*/
-	Deck deck;
-	Card c = deck.getCard(1);
-	cout << c.getFace() << endl;
-	c = deck.getCard(2);
-	cout << c.getFace() << endl;
-	vector<Deck> decks(4, deck);
-
-
+	cout << "Program terminated." << endl;
 	return 0;
 }
 
@@ -60,13 +46,9 @@ int main(){
  * 			request player's action
  * 			hit me
  * 			stay
- * 	Game
- * 		players
- * 		dealer
- * 		deck
- * 			create deck
- * 			number of each card left in deck (not in a hand or discarded)
  * 	Round
+ * 		steps:
+ * 			anty
  * 		hands per player
  * 		dealer's hand
  * 		anty

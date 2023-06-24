@@ -6,10 +6,11 @@
  * 			how to handle aces?
  */
 
-#include <string>
 
 #ifndef CARD_H_
 #define CARD_H_
+
+#include <string>
 
 class Card {
 public:

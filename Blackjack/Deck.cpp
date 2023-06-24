@@ -20,7 +20,7 @@ void Deck::setDeck(){
 		for(unsigned i = 0; i < numOfCardFaces; ++i){
 			Card c(faces[i], values[i], s);
 			deck.push_back(c);
-			//std::cout << c.getFace() << " " << c.getValue() << " " << c.getSuit() << std::endl;
+			//std::cout << getUsed(i) << std::endl;
 		}
 	}
 }
@@ -29,6 +29,10 @@ std::vector<Card> Deck::getDeck() {
 	return deck;
 }
 
-Card Deck::getCard(int index){
-	return deck[index];
+Card Deck::getCard(unsigned i){
+	return deck[i];
+}
+
+unsigned Deck::getNumCardsInDeck(){
+	return numCardsInDeck;
 }
