@@ -19,8 +19,8 @@ Game::Game() {
 Game::Game(unsigned players, unsigned decks, unsigned anty, unsigned raise) :
 		numPlayers(players), numDecks(decks), anty(anty), maxRaise(raise){
 	this->setDecks(numDecks);
-	shuffleDeck();
-	//setPlayers(numPlayers);
+	buildDeck();
+	setPlayers(numPlayers);
 	playGame();
 }
 
@@ -39,10 +39,16 @@ unsigned Game::getNumPlayers() const {
 	return numPlayers;
 }
 void Game::setPlayers(unsigned num){
+	/*
 	for(unsigned i = 0; i < num; ++i){
 		Player p;
 		players.push_back(p);
 	}
+	*/
+	Player p("test1", 1000, 6);
+	players= {p};
+	Player p2("test2", 2250, 4);
+	players.push_back(p2);
 }
 std::vector<Player> Game::getPlayers() {
 	return players;
@@ -62,7 +68,7 @@ void Game::setDecks(unsigned num){
 std::vector<Deck> Game::getDecks(){
 	return decks;
 }
-std::vector<Card> Game::getShuffledDeck(){
+std::vector<Card> &Game::getShuffledDeck(){
 	return shuffledDeck;
 }
 void Game::setAnty(unsigned num){
@@ -78,7 +84,8 @@ unsigned Game::getMaxRaise() const {
 	return maxRaise;
 }
 void Game::playGame(){
-	//introducePlayers();
+	introduceGame();
+	introducePlayers();
 	//playRound();
 
 	while(numPlayers >= 0 && playRound()){
@@ -89,13 +96,15 @@ void Game::playGame(){
 
 	endGame();
 }
-void Game::introducePlayers(){
+void Game::introduceGame(){
 	std::cout << "Welcome to the best Blackjack game on Earth!" << std::endl;
-	std::cout << "Today we have:" << std::endl;
+	std::cout << "Today we have:" << std::endl << std::endl;
+}
+void Game::introducePlayers(){
 	for(unsigned i = 0; i < numPlayers; ++i){
-		std::cout << players[i].getName() << " with $ " << players[i].getMoney() << " and " << players[i].getWins() << " career wins." << std::endl;
+		std::cout << players[i].getName() << " with $ " << players[i].getMoney() << " and " << players[i].getWins() << " career wins." << std::endl << std::endl;
 		if(i != numPlayers - 1){
-			std::cout << "VS." << std::endl;
+			std::cout << "vs." << std::endl << std::endl;
 		}
 	}
 }
@@ -132,9 +141,17 @@ int Game::endGame(){
 }
 
 /* Private */
-void Game::shuffleDeck(){
+void Game::buildDeck(){
 	Deck d;
 	unsigned numCardsInDeck = d.getNumCardsInDeck();
+
+	combineDecks(numCardsInDeck);
+
+	shuffleDecks(numCardsInDeck);
+
+}
+
+void Game::combineDecks(unsigned numCardsInDeck){
 
 	// combine decks - keeps normal sequential order
 	for(unsigned i = 0; i < numDecks; ++i){
@@ -142,6 +159,9 @@ void Game::shuffleDeck(){
 			shuffledDeck.push_back(decks[i].getCard(j));
 		}
 	}
+}
+
+void Game::shuffleDecks(unsigned numCardsInDeck){
 
 	// shuffle combined deck
 	srand(time(0));
@@ -152,4 +172,3 @@ void Game::shuffleDeck(){
 		std::swap(shuffledDeck[i], shuffledDeck[r]);
 	}
 }
-

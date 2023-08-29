@@ -31,7 +31,7 @@ public:
 	unsigned getNumDecks() const;
 	void setDecks(unsigned num);
 	std::vector<Deck> getDecks();
-	std::vector<Card> getShuffledDeck();
+	std::vector<Card> &getShuffledDeck();
 	void setAnty(unsigned num);
 	unsigned getAnty() const;
 	void setMaxRaise(unsigned num);
@@ -39,11 +39,14 @@ public:
 
 private:
 	void playGame();
+	void introduceGame();
 	void introducePlayers();
 	bool playRound();
 	void removePlayers();
 	int endGame();
-	void shuffleDeck();
+	void buildDeck();
+	void combineDecks(unsigned numOfCardsInDeck);
+	void shuffleDecks(unsigned numOfCardsInDeck);
 	//void swap (Card *a, Card *b);
 	const unsigned maxHand = 21;
 	unsigned numPlayers = 0;

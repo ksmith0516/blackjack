@@ -13,7 +13,10 @@
  * 	track wins
  *
  *
- *	**left off
+ *	*left off: calculating hands, eliminating players during a round
+ *	*fixes:
+ *		remove dealer from getting additional cards until all players are out or staying
+ *		figure out aces as 11 or 1
  */
 
 #include <iostream>
