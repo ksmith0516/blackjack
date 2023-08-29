@@ -61,11 +61,8 @@ void Round::printHandsForTest(){
 void Round::playRound(){
 	showHands();
 
-	//bool allStayOrOut = false;
-	//size_t numPeople = hands.size();
 	std::string action;
 
-	//while(!allStayOrOut){
 	while(!noMorePlayerActions()){
 		unsigned cnt = 0;
 		for(auto b = hands.begin(); b != hands.end(); ++b){
@@ -91,9 +88,7 @@ void Round::playRound(){
 				}
 			}
 			++cnt;
-			//allStayOrOut = noMorePlayerActions();
 		}
-
 	}
 }
 
